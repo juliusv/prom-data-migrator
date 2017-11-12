@@ -11,11 +11,11 @@ go build
 ## Run
 
 ```
-./migrator -v1-dir=./data-old -v2-dir=./data-new
+./prom-data-migrator -v1-dir=./data-old -v2-dir=./data-new
 ```
 
 ## Flags
 
 ```
-./migrator -h
+./prom-data-migrator -h
 ```
