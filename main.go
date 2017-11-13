@@ -14,6 +14,7 @@ import (
 	"github.com/prometheus/prometheus/storage/metric"
 	"github.com/prometheus/tsdb"
 	"github.com/prometheus/tsdb/labels"
+	"gopkg.in/cheggaaa/pb.v1"
 )
 
 func main() {
@@ -61,8 +62,12 @@ func main() {
 	}
 
 	now := model.Now()
+	totalSteps := (*lookback / *step).Nanoseconds()
+	bar := pb.StartNew(int(totalSteps))
+	level.Info(logger).Log("msg", "Total steps", "steps", totalSteps)
 	for t := now.Add(-*lookback); !t.After(now); t = t.Add(*step) {
-		level.Info(logger).Log("msg", "Migrating time step", "start", t, "end", t.Add(*step))
+		level.Debug(logger).Log("msg", "Migrating time step", "start", t, "end", t.Add(*step))
+		bar.Increment()
 		its, err := v1Storage.QueryRange(context.Background(), t, t.Add(*step), matcher)
 		if err != nil {
 			level.Error(logger).Log("msg", "Error querying v1 storage", "err", err)
@@ -98,4 +103,5 @@ func main() {
 			os.Exit(1)
 		}
 	}
+	bar.FinishPrint("Migration Complete")
 }
