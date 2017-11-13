@@ -11,7 +11,7 @@ go build
 ## Run
 
 ```
-./prom-data-migrator -v1-dir=./data-old -v2-dir=./data-new
+./prom-data-migrator -v1-dir=./data-old -v2-dir=./data-new 2> migration.log
 ```
 
 ## Flags
