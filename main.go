@@ -21,12 +21,13 @@ func main() {
 	v2Dir := flag.String("v2-dir", "./data-v2", "Path to the v2 storage directory.")
 	lookback := flag.Duration("lookback", 15*24*time.Hour, "How far back to start when exporting old data.")
 	step := flag.Duration("step", 15*time.Minute, "How much data to load at once.")
+	v1HeapSize := flag.Uint64("v1-target-heap-size", 2000000000, "How much memory to use for v1 storage in bytes")
 	flag.Parse()
 
 	logger := log.NewSyncLogger(log.NewLogfmtLogger(os.Stderr))
 
 	v1Storage := local.NewMemorySeriesStorage(&local.MemorySeriesStorageOptions{
-		TargetHeapSize:             2000000000,
+		TargetHeapSize:             *v1HeapSize,
 		PersistenceRetentionPeriod: 999999 * time.Hour,
 		PersistenceStoragePath:     *v1Dir,
 		HeadChunkTimeout:           999999 * time.Hour,
