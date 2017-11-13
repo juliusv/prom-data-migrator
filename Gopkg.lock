@@ -62,6 +62,12 @@
   revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
 
 [[projects]]
+  name = "github.com/mattn/go-runewidth"
+  packages = ["."]
+  revision = "9e777a8366cce605130a531d2cd6363d07ad7317"
+  version = "v0.0.2"
+
+[[projects]]
   name = "github.com/matttproud/golang_protobuf_extensions"
   packages = ["pbutil"]
   revision = "3247c84500bff8d9fb6d579d800f20b3e091582c"
@@ -169,9 +175,15 @@
   revision = "1087e65c9441605df944fb12c33f0fe7072d18ca"
   version = "v2.2.5"
 
+[[projects]]
+  name = "gopkg.in/cheggaaa/pb.v1"
+  packages = ["."]
+  revision = "657164d0228d6bebe316fdf725c69f131a50fb10"
+  version = "v1.0.18"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a86e700af5b0b14cec63204691f4fb6f9c7cf4fb98f641ad503ae18ec16c1a8e"
+  inputs-digest = "53eda9eb935ec526bbed025564e136cda1e8ea34260d24a4123a0e0ab15a92fb"
   solver-name = "gps-cdcl"
   solver-version = 1
