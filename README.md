@@ -2,6 +2,10 @@
 
 Tool to migrate Prometheus 1.x data directories to the 2.0 format.
 
+## Prerequisites
+
+Golang 1.9 or higher
+
 ## Build
 
 ```
